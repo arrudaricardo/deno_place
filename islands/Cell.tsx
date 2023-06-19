@@ -1,6 +1,5 @@
 import { signal, computed, type Signal } from "@preact/signals";
 import { type Cell as TypeCell } from "../utils/db.ts";
-import { CellChannel } from "../server/message.ts";
 
 interface Props {
   cell?: TypeCell;
@@ -43,17 +42,17 @@ export default function CellGrid({ index, width, height, cell }: Props) {
       background-color: ${color};
       width: ${width}px; 
       height: ${height}px; 
-      ${isFocus.value ? "border: 2px solid black;" : ""}
+       ${isFocus.value ? "outline: 4px solid black; z-index: 1" : ""}
    `
   );
 
   return (
     <div style={backgroundStyle}>
       <input
-        onFocus={(e) => {
+        onFocus={() => {
           isFocus.value = true;
         }}
-        onBlur={(e) => {
+        onBlur={() => {
           isFocus.value = false;
         }}
         class="opacity-0 absolute w-full h-full cursor-inherit"

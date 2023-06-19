@@ -1,8 +1,7 @@
 import Cell from "./Cell.tsx";
 import { type Cell as TypeCell } from "../utils/db.ts";
 import { useRef, useEffect, useState } from "preact/hooks";
-import { signal, computed } from "@preact/signals";
-import { maxSatisfying } from "https://deno.land/std@0.178.0/semver/mod.ts";
+import InfoCell from "./InfoCell.tsx";
 
 interface Props {
   cells: Array<TypeCell | undefined>;
@@ -63,17 +62,25 @@ export default function CellGrid(props: Props) {
   `;
 
   return (
-    <div ref={containerRef} class="mx-auto sm:w-10/12 md:w-8/12	lg:w-5/12 xl:w/3/12 h-screen " style={gridStyle}>
+    <div
+      ref={containerRef}
+      class="mx-auto sm:w-10/12 md:w-8/12	lg:w-5/12 xl:w/3/12 h-screen "
+      style={gridStyle}
+    >
       {cells.map((cell, index) => {
-        return (
-          <Cell
-            key={index + "_cell"}
-            width={size.x}
-            height={size.y}
-            cell={cell}
-            index={index}
-          />
-        );
+        if (collumnSize - 1 === index) {
+          return <InfoCell width={size.x} height={size.y} />;
+        } else {
+          return (
+            <Cell
+              key={index + "_cell"}
+              width={size.x}
+              height={size.y}
+              cell={cell}
+              index={index}
+            />
+          );
+        }
       })}
     </div>
   );

@@ -9,6 +9,7 @@ import * as $2 from "./routes/api/cells/index.ts";
 import * as $3 from "./routes/index.tsx";
 import * as $$0 from "./islands/Cell.tsx";
 import * as $$1 from "./islands/CellsGrid.tsx";
+import * as $$2 from "./islands/InfoCell.tsx";
 
 const manifest = {
   routes: {
@@ -20,6 +21,7 @@ const manifest = {
   islands: {
     "./islands/Cell.tsx": $$0,
     "./islands/CellsGrid.tsx": $$1,
+    "./islands/InfoCell.tsx": $$2,
   },
   baseUrl: import.meta.url,
   config,

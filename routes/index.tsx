@@ -19,6 +19,7 @@ export default function Home(props: PageProps<HomeProps>) {
     <>
       <Head>
         <title> Deno Place </title>
+        <link rel="stylesheet" href="/global.css" />
       </Head>
       <div >
         <CellsGrid cells={props.data.cells} />
